@@ -3,6 +3,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      js: {
+        src: ['public/lib/underscore.js', 'public/lib/jquery.js', 'public/lib/backbone.js',
+              'public/lib/handlebars.js', 'public/client/*.js'],
+        dest: 'public/dist/script.concat.js'
+      }
     },
 
     mochaTest: {
@@ -21,11 +26,16 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      sourceMap: true,
+      js:{
+        src: ['public/dist/script.concat.js'],
+        dest: 'public/dist/script.min.js'
+      }
     },
 
     jshint: {
       files: [
-        // Add filespec list here
+        'Gruntfile.js', 'app/**/*.js', 'lib/**/*.js', 'public/**/*.js'
       ],
       options: {
         force: 'true',
@@ -76,9 +86,9 @@ module.exports = function(grunt) {
   grunt.registerTask('server-dev', function (target) {
     // Running nodejs in a different process and displaying output on the main console
     var nodemon = grunt.util.spawn({
-         cmd: 'grunt',
-         grunt: true,
-         args: 'nodemon'
+      cmd: 'grunt',
+      grunt: true,
+      args: 'nodemon'
     });
     nodemon.stdout.pipe(process.stdout);
     nodemon.stderr.pipe(process.stderr);
@@ -91,10 +101,11 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
 
   grunt.registerTask('test', [
-    'mochaTest'
+    'jshint', 'mochaTest'
   ]);
 
   grunt.registerTask('build', [
+    'test', 'concat', 'uglify'
   ]);
 
   grunt.registerTask('upload', function(n) {

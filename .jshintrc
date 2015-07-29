@@ -1,0 +1,11 @@
+{
+  "curly": true,
+  "eqeqeq": true,
+  "undef": false,
+  "globals": {
+    "jQuery": true,
+    "process": true,
+    "module": true
+  },
+  "indent": 2
+}
