@@ -14,6 +14,7 @@ var Link = require('../app/models/link');
 var User = require('../app/models/user');
 var Link = require('../app/models/link');
 ('', function() {
+  console.log('TRESTING');
 
   beforeEach(function(done) {
     // Log out currently signed in user

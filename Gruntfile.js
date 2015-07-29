@@ -13,7 +13,10 @@ module.exports = function(grunt) {
     mochaTest: {
       test: {
         options: {
-          reporter: 'spec'
+          reporter: 'spec',
+          captureFile: 'results.txt', // Optionally capture the reporter output to a file
+          quiet: false, // Optionally suppress output to standard out (defaults to false)
+          clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false)
         },
         src: ['test/**/*.js']
       }
@@ -26,7 +29,6 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      sourceMap: true,
       js:{
         src: ['public/dist/script.concat.js'],
         dest: 'public/dist/script.min.js'
@@ -48,7 +50,15 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
-        // Add filespec list here
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'public',
+          src: '*.css',
+          dest: 'public/dist/css',
+          ext: '.min.css'
+        }]
+      }
     },
 
     watch: {
@@ -105,7 +115,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'test', 'concat', 'uglify'
+    'test', 'concat', 'uglify', 'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
