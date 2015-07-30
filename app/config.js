@@ -6,19 +6,8 @@ var path = require('path');
 // Retrieve
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/shortlydb');
-var urlSchema;
-var userSchema;
 
-mongoose.on('error', console.error.bind(console, 'connection error:'));
-
-mongoose.once('open', function(){
-  var Schema = mongoose.Schema;
-  // var Link = require('../models/link');
-
-  // var Links = new db.Collection();
-
-  // Links.model = Link;
-  urlSchema = new Schema({
+  urlSchema = {
     id: Number,
     url: String,
     base_url: String,
@@ -27,27 +16,22 @@ mongoose.once('open', function(){
     visits: Number,
     created_at: Date,
     updated_at: Date
-  });
+  };
 
-  userSchema = new Schema({
+  userSchema = {
     id: Number,
     username: String,
     password: String,
     created_at: Date,
     updated_at: Date
-  });
-});
+  };
 
-module.exports = mongoose.connection;
 
-module.exports = function(){
-    if(typeof urlSchema !== undefined && typeof userSchema !== undefined ){
-        mongoose.connection;
-    } else {
-        undefined;
-    }
-}
+  exports.Link = mongoose.model('Link', urlSchema, 'url');
 
+  exports.User = mongoose.model('User', userSchema, 'user');
+
+  exports.connection = mongoose.connection;
 
 ///////////////////////////////
 

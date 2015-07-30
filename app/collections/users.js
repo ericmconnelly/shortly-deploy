@@ -8,13 +8,13 @@
 
 // module.exports = Users;
 
-var userSchema = new Schema({
-  id: Number,
-  username: String,
-  password: String,
-  created_at: Date,
-  updated_at: Date
-});
+// var userSchema = new Schema({
+//   id: Number,
+//   username: String,
+//   password: String,
+//   created_at: Date,
+//   updated_at: Date
+// });
 
 
-module.exports = mongoose.model('User', userSchema);
+// module.exports = mongoose.model('User', userSchema);
