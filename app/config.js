@@ -7,7 +7,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/shortlydb');
 
-  urlSchema = {
+  var urlSchema = {
     id: Number,
     url: String,
     base_url: String,
@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost/shortlydb');
     updated_at: Date
   };
 
-  userSchema = {
+  var userSchema = {
     id: Number,
     username: String,
     password: String,
@@ -27,9 +27,9 @@ mongoose.connect('mongodb://localhost/shortlydb');
   };
 
 
-  exports.Link = mongoose.model('Link', urlSchema, 'url');
+  exports.Link = mongoose.model('Link', urlSchema, 'urls');
 
-  exports.User = mongoose.model('User', userSchema, 'user');
+  exports.User = mongoose.model('User', userSchema, 'users');
 
   exports.connection = mongoose.connection;
 
