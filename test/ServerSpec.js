@@ -7,19 +7,15 @@ var db = require('../app/config');
 var User = require('../app/models/user');
 var Link = require('../app/models/link');
 
-
 /////////////////////////////////////////////////////
 // NOTE: these tests are designed for mongo!
 /////////////////////////////////////////////////////
 
-var Users = require('../app/collections/users');
-var Links = require('../app/collections/links');
+var User = require('../app/models/user');
+var Link = require('../app/models/link');
+('', function() {
 
-describe('', function() {
   beforeEach(function(done) {
-    // var link = new Link();
-    // var user = new User();
-
     // Log out currently signed in user
     request(app)
       .get('/logout')
@@ -86,7 +82,7 @@ describe('', function() {
             Link.findOne({'url' : 'http://www.roflzoo.com/'})
               .exec(function(err,link){
                 if(err) console.log(err);
-                expect(link.title).to.equal('Rofl Zoo - Daily funny animal pictures');
+                expect(link.title).to.equal('Funny pictures of animals, funny dog pictures');
               });
           })
           .end(done);
@@ -101,7 +97,8 @@ describe('', function() {
           url: 'http://www.roflzoo.com/',
           title: 'Rofl Zoo - Daily funny animal pictures',
           base_url: 'http://127.0.0.1:4568',
-          visits: 0
+          visits: 0,
+          code : '582d6'
         })
 
         link.save(function() {
@@ -250,5 +247,4 @@ describe('', function() {
 
   }); // Account Login
 
-});
-
+})();

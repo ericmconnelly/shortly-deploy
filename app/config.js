@@ -4,34 +4,40 @@ var path = require('path');
 ///////////////////////////////
 //MONGOOSE
 // Retrieve
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/shortlydb');
-
-  var urlSchema = {
-    id: Number,
-    url: String,
-    base_url: String,
-    code: String,
-    title: String,
-    visits: Number,
-    created_at: Date,
-    updated_at: Date
-  };
-
-  var userSchema = {
-    id: Number,
-    username: String,
-    password: String,
-    created_at: Date,
-    updated_at: Date
-  };
+exports.mongoose = require('mongoose');
+var Schema = exports.mongoose.Schema;
+// var ObjectId = Schema.ObjectId;
+exports.mongoose.connect('mongodb://MongoLab-r:f3BWB.ORBBLTrl..oUe5h4.NZvcet_bwG7lk5hmbRjI-@ds036178.mongolab.com:36178/MongoLab-r/shortlydb');
 
 
-  exports.Link = mongoose.model('Link', urlSchema, 'urls');
+var db = exports.mongoose.connection;
 
-  exports.User = mongoose.model('User', userSchema, 'users');
+db.on('error', console.error.bind(console, 'connection error:'));
 
-  exports.connection = mongoose.connection;
+db.once('open', function (callback) {
+  console.log('connection opened');
+});
+
+exports.urlSchema = new Schema({
+  url: String,
+  base_url: String,
+  code: String,
+  title: String,
+  visits: Number,
+  date: {type: Date, default: Date.now}
+});
+
+exports.userSchema = new Schema({
+  username: String,
+  password: String,
+  date: {type: Date, default: Date.now}
+});
+
+
+// exports.urlsModel = mongoose.model('Link', exports.urlSchema, 'urls');
+// exports.usersModel = mongoose.model('User', exports.userSchema, 'users');
+
+// exports.connection = mongoose.connection;
 
 ///////////////////////////////
 
