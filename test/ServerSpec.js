@@ -7,16 +7,19 @@ var db = require('../app/config');
 var User = require('../app/models/user');
 var Link = require('../app/models/link');
 
+
 /////////////////////////////////////////////////////
 // NOTE: these tests are designed for mongo!
 /////////////////////////////////////////////////////
 
-var User = require('../app/models/user');
-var Link = require('../app/models/link');
-('', function() {
-  console.log('TRESTING');
+var Users = require('../app/collections/users');
+var Links = require('../app/collections/links');
 
+describe('', function() {
   beforeEach(function(done) {
+    // var link = new Link();
+    // var user = new User();
+
     // Log out currently signed in user
     request(app)
       .get('/logout')
@@ -248,3 +251,4 @@ var Link = require('../app/models/link');
   }); // Account Login
 
 });
+
