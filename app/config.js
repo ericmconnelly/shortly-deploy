@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 
 if (process.env.NODE_ENV === 'production') {
   console.log("USING PROD DB");
-  mongoose.connect('mongodb://kevken:shortly123@ds038888.mongolab.com:38888/shortly');
+  mongoose.connect('mongodb://MongoLab-r:f3BWB.ORBBLTrl..oUe5h4.NZvcet_bwG7lk5hmbRjI-@ds036178.mongolab.com:36178/MongoLab-r/shortlydb');
 } else {
   console.log("USING TEST DB");
   mongoose.connect('mongodb://localhost/test');
