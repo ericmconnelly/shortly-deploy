@@ -1,4 +1,35 @@
 
+[0m[0m
+[0m  test begins[0m
+[0m    Link creation: [0m
+Connected to mongo database
+Not a valid url:  definitely not a valid url
+[2K[0G    [32m  ✓[0m[90m Only shortens valid urls, returning a 404 - Not found for invalid urls [0m[33m(52ms)[0m
+[0m      Shortening links:[0m
+[2K[0G      [32m  ✓[0m[90m Responds with the short code [0m[31m(821ms)[0m
+[2K[0G      [32m  ✓[0m[90m New links create a database entry [0m[31m(716ms)[0m
+[2K[0G      [32m  ✓[0m[90m Fetches the link url title [0m[31m(872ms)[0m
+[0m      With previously saved urls: [0m
+[2K[0G      [32m  ✓[0m[90m Returns the same shortened code if attempted to add the same URL twice [0m
+[2K[0G      [32m  ✓[0m[90m Shortcode redirects to correct url [0m
+[0m    Priviledged Access:[0m
+hi!
+[2K[0G    [32m  ✓[0m[90m Redirects to login page if a user tries to access the main page and is not signed in [0m
+hi!
+[2K[0G    [32m  ✓[0m[90m Redirects to login page if a user tries to create a link and is not signed in [0m
+hi!
+[2K[0G    [32m  ✓[0m[90m Redirects to login page if a user tries to see all of the links and is not signed in [0m
+[0m    Account Creation:[0m
+Creating session!
+[2K[0G    [32m  ✓[0m[90m Signup creates a new user [0m[31m(246ms)[0m
+Creating session!
+[2K[0G    [32m  ✓[0m[90m Successful signup logs in a new user [0m[31m(240ms)[0m
+[0m    Account Login:[0m
+Creating session!
+[2K[0G    [32m  ✓[0m[90m Logs in existing users [0m[31m(238ms)[0m
+who are you???
+[2K[0G    [32m  ✓[0m[90m Users that do not exist are kept on login page [0m
 
-[92m [0m[32m 0 passing[0m[90m (0ms)[0m
+
+[92m [0m[32m 13 passing[0m[90m (4s)[0m
 
